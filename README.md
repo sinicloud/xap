@@ -33,7 +33,7 @@
 
 #### 请求地址
 ```
-wss://api.xap.sinicloud.com:16808/v1/xap/?{请求参数}
+wss://api.xap.sinicloud.com:16443/v1/xap/?{请求参数}
 ```
 
 #### 请求参数格式
@@ -43,7 +43,7 @@ key1=value1&key2=value2&key3=value3&key4=value4
 
 #### 请求示例
 ```
-wss://api.xap.sinicloud.com:16808/v1/xap/?appID=anfwxxx01&salt=5fQUr0z4jOMt&timestamp=1588347032185&sign=267a098e2c69ced7f8e27fd2c64bc4c176c64386dc325c90528ca3f58fbe1ec7&from=zh&to=en-US
+wss://api.xap.sinicloud.com:16443/v1/xap/?appID=anfwxxx01&salt=5fQUr0z4jOMt&timestamp=1588347032185&sign=267a098e2c69ced7f8e27fd2c64bc4c176c64386dc325c90528ca3f58fbe1ec7&from=zh&to=en-US
 ```
 
 
