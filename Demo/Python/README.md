@@ -8,8 +8,14 @@
 | --------- | ---------- |
 | Python    | &gt;=3.6.5 |
 | websocket | &gt;=0.2.1 |
+| websocket_client | &gt;=0.57.0 |
 
-**推荐使用 pip 命令安装依赖库。**
+**推荐使用 pip 命令安装依赖库，如下：**
+
+```
+pip install websocket
+pip install websocket_client
+```
 
 ## 配置
 
