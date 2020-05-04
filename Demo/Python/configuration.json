@@ -1,0 +1,15 @@
+{
+    "xap": {
+        "appid": "xapaccount-1385487646",
+        "appsecret": "b1603e2fad947fc1a560e1f4bb7ffd589f2fbd785ca5176758ec0c9834ac4e3f"
+    },
+    "ws": {
+        "url": "wss://api.xap.sinicloud.com:16443/v1/xap/"
+    },
+    "audio": {
+        "input": "./en-US-female.pcm",
+        "sample-rate": 16000,
+        "from": "en-US",
+        "to": "zh"
+    }
+}
