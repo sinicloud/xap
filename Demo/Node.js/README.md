@@ -1,8 +1,6 @@
 # 基于 Node.js 的 XAP 示例客户端
 
-## 说明
-
-本项目是基于 Node.js 的 XAP (XOrange Audio Project) 客户端的实现，提供了一个 XAP Web API 客户端的样例。
+基于 Node.js 的声云实时语音翻译 Web API 的客户端 Demo 实现。
 
 ##  依赖
 
@@ -46,16 +44,16 @@ npm ci
 
 | 键                      | 类型   | 必须 | 描述 |
 | ---------------------- | ------ | --- | ---- |
-| xap                    | Objecg | 是  | XAP 账户配置。 |
-| xap.appid              | String | 是  | 已申请的 APPID。 |
-| xap.appsecret          | String | 是  | 已申请的 APP 密钥。 |
-| ws                     | Object | 是  | WebSocket 配置。 |
-| ws.url                 | String | 是  | 目的 URL。 |
-| audio                  | Object | 是  | 音频配置。 |
-| audio.input            | String | 是  | 作为输入的音频文件的路径。 |
-| audio.sample-rate      | Number | 是  | 音频采样率。 |
-| audio.from             | String | 是  | 源语言（遵循 BCP46）。 |
-| <span>audio.to</span>  | String | 是  | 目标语言（遵循 BCP46）。 |
+| xap                    | Objecg | 是  | XAP 账户配置 |
+| xap.appid              | String | 是  | 已申请的 APPID |
+| xap.appsecret          | String | 是  | 已申请的 APP 密钥 |
+| ws                     | Object | 是  | WebSocket 配置 |
+| ws.url                 | String | 是  | 目的 URL |
+| audio                  | Object | 是  | 音频配置 |
+| audio.input            | String | 是  | 作为输入的音频文件的路径 |
+| audio.sample-rate      | Number | 是  | 音频采样率 |
+| audio.from             | String | 是  | 源语言（遵循 BCP46） |
+| <span>audio.to</span>  | String | 是  | 目标语言（遵循 BCP46） |
 
 ## 运行
 
