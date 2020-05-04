@@ -13,7 +13,6 @@ from hashlib import sha256
 import math
 import json
 import os
-import ssl
 import sys
 import time
 import _thread as thread
@@ -209,4 +208,4 @@ if __name__ == "__main__":
     client.on_open = on_websocket_open_event
 
     #  Hang.
-    client.run_forever(sslopt={"cert_reqs": ssl.CERT_NONE})
+    client.run_forever()
