@@ -118,8 +118,6 @@ function GenerateAudioJSONPkts(
         "rate": cfg["audio"]["sample-rate"]
     });
 
-    console.log(qparam);
-
     //  Build URL.
     let url = Util.format(
         "%s?%s",
@@ -198,9 +196,7 @@ function GenerateAudioJSONPkts(
                 ));
             }
         } else if (pkt["type"] == "origin/end") {
-            console.log(Util.format(
-                "[RX][ORI] Finished!"
-            ));
+            console.log("[RX][ORI] Finished!");
         } else if (pkt["type"] == "translation") {
             if (pkt["data"]["is-final"]) {
                 console.log(Util.format(
@@ -214,22 +210,16 @@ function GenerateAudioJSONPkts(
                 ));
             }
         } else if (pkt["type"] == "translation/end") {
-            console.log(Util.format(
-                "[RX][TRAN] Finished!"
-            ));
+            console.log("[RX][TRAN] Finished!");
         } else if (pkt["type"] == "audio") {
             console.log(Util.format(
                 "[RX][AU] %d bytes.",
                 Buffer.from(pkt["data"]["audio"], "base64").length
             ));
         } else if (pkt["type"] == "audio/flush") {
-            console.log(Util.format(
-                "[RX][AU] Flush!"
-            ));
+            console.log("[RX][AU] Flush!");
         } else if (pkt["type"] == "audio/end") {
-            console.log(Util.format(
-                "[RX][AU] Finished!"
-            ));
+            console.log("[RX][AU] Finished!");
         } else {
             console.error("[RX][ERROR] Unknown chunk.");
         }
