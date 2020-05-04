@@ -1,12 +1,12 @@
-# XAP Sample Client for Python
+# 基于 Python 的 XAP 示例客户端
 
 本项目是基于 Python 的 XAP (XOrnage Audio Project) 客户端实现，提供了一个实现 XAP Web API 客户端的样例。
 
 ## 依赖
 
-| Package | Version |
-| ------- | ------- |
-| Python  | &gt;=3.6.5 |
+| 依赖包     | 版本        |
+| --------- | ---------- |
+| Python    | &gt;=3.6.5 |
 | websocket | &gt;=0.2.1 |
 
 **推荐使用 pip 命令安装依赖库。**

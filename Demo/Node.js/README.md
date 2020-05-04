@@ -1,18 +1,30 @@
-# XAP Sample Client for Node.js
+# 基于 Node.js 的 XAP 示例客户端
 
-## Introduction
+## 说明
 
-This package is an implementation of XOrange Audio Project (XAP) client based on Node.js, which is also a example of customizing your own client for Web API.
+本项目是基于 Node.js 的 XAP (XOrange Audio Project) 客户端的实现，提供了一个 XAP Web API 客户端的样例。
 
-##  Requirement
+##  依赖
 
-| Package | Version      |
+| 依赖     | 版本         |
 | ------- | ------------ |
 | Node.js | &gt;=10.11.0 |
 
-## Configuration
+下载该项目后，在项目目录中运行以下命令安装依赖包：
 
-You need to edit 'configuration.json' before running this program. Here is a configuration template (replace fields with your own configuration):
+```
+npm install
+```
+
+或者 
+
+```
+npm ci
+```
+
+## 配置
+
+在运行该程序之前，需要先编辑 'configuration.json' 文件，以下是一个配置的样例（用您自己的配置替换对应字段）：
 
 ```json
 {
@@ -32,27 +44,27 @@ You need to edit 'configuration.json' before running this program. Here is a con
 }
 ```
 
-| Key               | Type   | Optional | Description |
-| ----------------- | ------ | -------- | ----------- |
-| xap               | Object | N        | This XAP account. | 
-| xap.appid         | String | N        | The APPID previously applied for. |
-| xap.appsecret     | String | N        | The APP key previously applied for. |
-| ws                | Object | N        | WebSocket connection. |
-| ws.url            | String | N        | Connection URL. | 
-| audio             | Object | N        | Audio parameters. |
-| audio.input       | String | N        | Address of audio file as input. |
-| audio.sample-rate | Number | N        | Sample rate of audio file. |
-| audio.from        | String | N        | Language code of input audio. (based on BCP47) |
-| <span>audio.to</span> | String | N    | Language code of output audio. (based on BCP47) |
+| 键                      | 类型   | 必须 | 描述 |
+| ---------------------- | ------ | --- | ---- |
+| xap                    | Objecg | 是  | XAP 账户配置。 |
+| xap.appid              | String | 是  | 已申请的 APPID。 |
+| xap.appsecret          | String | 是  | 已申请的 APP 密钥。 |
+| ws                     | Object | 是  | WebSocket 配置。 |
+| ws.url                 | String | 是  | 目的 URL。 |
+| audio                  | Object | 是  | 音频配置。 |
+| audio.input            | String | 是  | 作为输入的音频文件的路径。 |
+| audio.sample-rate      | Number | 是  | 音频采样率。 |
+| audio.from             | String | 是  | 源语言（遵循 BCP46）。 |
+| <span>audio.to</span>  | String | 是  | 目标语言（遵循 BCP46）。 |
 
-## Running
+## 运行
 
-Then, you can run this program in your terminal, like:
+在终端使用以下命令运行程序：
 
 ```
 node main.js
 ```
 
-##  Document
+## 文档
 
-WebAPI document is [here](https://github.com/sinicloud/xap/blob/master/README.md)
+[Web API 文档](https://github.com/sinicloud/xap/blob/master/README.md)
