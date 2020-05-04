@@ -478,3 +478,9 @@ sign = 267a098e2c69ced7f8e27fd2c64bc4c176c64386dc325c90528ca3f58fbe1ec7
 | 4016 | 音频超过最大时长 | 请检查是否上传音频超过 3 分钟 |
 
 **范围在 1000-2999 的错误码为 WebSocket 标准（RFC 6455）规定状态码**
+
+## 附录三：示例代码
+
+- [基于 Node.js 的实时语音翻译 Web API Demo](https://github.com/sinicloud/xap/tree/master/Demo/Node.js)
+
+- [基于 Python 的实时语音翻译 Web API Demo](https://github.com/sinicloud/xap/tree/master/Demo/Python)
