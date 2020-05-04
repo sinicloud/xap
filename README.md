@@ -63,7 +63,7 @@ wss://api.xap.sinicloud.com:16808/v1/xap/?appID=anfwxxx01&salt=5fQUr0z4jOMt&time
 
 #### 签名生成
 
-签名 sign 的原始字段由 appID、salt、timestamp、appSecret（已申请的应用密钥）按照顺序拼接而成，将拼接成的原始字段通过 hmac-sha256 计算可得签名 sign 的值。
+签名 sign 的原始字段由 appID、salt、timestamp、appSecret（已申请的应用密钥）按照顺序拼接而成，将拼接成的原始字段通过 Sha256 哈希计算可得签名 sign 的值。
 
 示例如下（Node.js 代码）：
 ```
