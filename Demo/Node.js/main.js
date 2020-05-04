@@ -186,13 +186,13 @@ function GenerateAudioJSONPkts(
         if (pkt["type"] == "origin") {
             if (pkt["data"]["is-final"]) {
                 console.log(Util.format(
-                    "[RX][ORI][FINAL] Sentense: %s",
-                    pkt["data"]["sentense"]
+                    "[RX][ORI][FINAL] Sentence: %s",
+                    pkt["data"]["sentence"]
                 ));
             } else {
                 console.log(Util.format(
-                    "[RX][ORI][PARTIAL] Sentense: %s",
-                    pkt["data"]["sentense"]
+                    "[RX][ORI][PARTIAL] Sentence: %s",
+                    pkt["data"]["sentence"]
                 ));
             }
         } else if (pkt["type"] == "origin/end") {
@@ -200,13 +200,13 @@ function GenerateAudioJSONPkts(
         } else if (pkt["type"] == "translation") {
             if (pkt["data"]["is-final"]) {
                 console.log(Util.format(
-                    "[RX][TRAN][FINAL] Sentense: %s",
-                    pkt["data"]["sentense"]
+                    "[RX][TRAN][FINAL] Sentence: %s",
+                    pkt["data"]["sentence"]
                 ));
             } else {
                 console.log(Util.format(
-                    "[RX][TRAN][PARTIAL] Sentense: %s",
-                    pkt["data"]["sentense"]
+                    "[RX][TRAN][PARTIAL] Sentence: %s",
+                    pkt["data"]["sentence"]
                 ));
             }
         } else if (pkt["type"] == "translation/end") {

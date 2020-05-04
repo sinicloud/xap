@@ -75,23 +75,23 @@ def on_websocket_message_event(ws, msg):
     
     if pkt["type"] == "origin":
         if pkt["data"]["is-final"]:
-            print("RX][ORI][FINAL] Sentense: {0}".format(
-                pkt["data"]["sentense"]
+            print("RX][ORI][FINAL] Sentence: {0}".format(
+                pkt["data"]["sentence"]
             ))
         else:
-            print("[RX][ORI][PARTIAL] Sentense: {0}".format(
-                pkt["data"]["sentense"]
+            print("[RX][ORI][PARTIAL] Sentence: {0}".format(
+                pkt["data"]["sentence"]
             ))
     elif pkt["type"] == "origin/end":
         print("[RX][ORI] Finished!")
     elif pkt["type"] == "translation":
         if pkt["data"]["is-final"]:
-            print("RX][TRAN][FINAL] Sentense: {0}".format(
-                pkt["data"]["sentense"]
+            print("RX][TRAN][FINAL] Sentence: {0}".format(
+                pkt["data"]["sentence"]
             ))
         else:
-            print("[RX][TRAN][PARTIAL] Sentense: {0}".format(
-                pkt["data"]["sentense"]
+            print("[RX][TRAN][PARTIAL] Sentence: {0}".format(
+                pkt["data"]["sentence"]
             ))
     elif pkt["type"] == "translation/end":
         print("[RX][TRAN] Finished!")

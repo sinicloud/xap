@@ -154,7 +154,7 @@ sign = 267a098e2c69ced7f8e27fd2c64bc4c176c64386dc325c90528ca3f58fbe1ec7
     "type": "origin",
     "data": {
         "is-final": false,
-        "sentense": "你好" 
+        "sentence": "你好" 
     }
 }
 
@@ -167,7 +167,7 @@ sign = 267a098e2c69ced7f8e27fd2c64bc4c176c64386dc325c90528ca3f58fbe1ec7
 | type          | String  | 是   | 类型描述，值为 "origin"|
 | data          | Object  | 是   | 源语言文本结果信息           |
 | data.is-final | Boolean | 是   | 是否为完整单句         |
-| data.sentense | String  | 是   | 源语言文本结果，采用 UTF-8 编码 |
+| data.sentence | String  | 是   | 源语言文本结果，采用 UTF-8 编码 |
 
 
 
@@ -229,7 +229,7 @@ sign = 267a098e2c69ced7f8e27fd2c64bc4c176c64386dc325c90528ca3f58fbe1ec7
     "type": "translation",
     "data": {
         "is-final": false,
-        "sentense": "Hello"
+        "sentence": "Hello"
     }
 }
 
@@ -242,7 +242,7 @@ sign = 267a098e2c69ced7f8e27fd2c64bc4c176c64386dc325c90528ca3f58fbe1ec7
 | type          | String  | 是   | 类型描述，值为 "translation" |
 | data          | Object  | 是   | 目标语言文本结果信息            |
 | data.is-final | Boolean | 是   | 是否为完整单句               |
-| data.sentense | String  | 是   | 目标语言文本结果，采用 UTF-8 编码   |
+| data.sentence | String  | 是   | 目标语言文本结果，采用 UTF-8 编码   |
 
 >就像[在用户界面上实时显示源语言的文本结果](#jump1)一样，我们也可以在用户界面上按照相同的逻辑实时显示目标语言的文本结果。
 >
