@@ -33,7 +33,7 @@
 
 #### 请求地址
 ```
-wss://api.xap.sinicloud.com/xap/?{请求参数}
+wss://api.xap.sinicloud.com:16808/v1/xap/?{请求参数}
 ```
 
 #### 请求参数格式
@@ -43,7 +43,7 @@ key1=value1&key2=value2&key3=value3&key4=value4
 
 #### 请求示例
 ```
-wss://api.xap.sinicloud.com/xap/?appID=anfwxxx01&salt=5fQUr0z4jOMt&timestamp=1588347032185&sign=267a098e2c69ced7f8e27fd2c64bc4c176c64386dc325c90528ca3f58fbe1ec7&from=zh&to=en-US
+wss://api.xap.sinicloud.com:16808/v1/xap/?appID=anfwxxx01&salt=5fQUr0z4jOMt&timestamp=1588347032185&sign=267a098e2c69ced7f8e27fd2c64bc4c176c64386dc325c90528ca3f58fbe1ec7&from=zh&to=en-US
 ```
 
 
@@ -464,6 +464,7 @@ sign = 267a098e2c69ced7f8e27fd2c64bc4c176c64386dc325c90528ca3f58fbe1ec7
 | 错误码  | 描述   | 解决方法 |
 | ---- | ---- | ---- |
 | 1000 | 正常关闭 |     |
+| 1006 | 异常关闭，请检查您的网络连接。 |
 | 4001 | 请求不合法  | 请检查请求参数是否正确  |
 | 4002 | 时间戳不合法  | 请检查时间戳是否正确|
 | 4003 | 签名不合法  | 请检查 appID 和 appSecret是否正确、签名算法是否正确 |
@@ -475,3 +476,5 @@ sign = 267a098e2c69ced7f8e27fd2c64bc4c176c64386dc325c90528ca3f58fbe1ec7
 | 4014 | 语音合成失败 | 请重新尝试或者联系系统管理员/提交工单 |
 | 4015 | 未知错误 | 请联系系统管理员/提交工单 |
 | 4016 | 音频超过最大时长 | 请检查是否上传音频超过 3 分钟 |
+
+**范围在 1000-2999 的错误码为 WebSocket 标准（RFC 6455）规定状态码**
