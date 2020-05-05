@@ -7,6 +7,8 @@
 //
 //  Imports.
 //
+
+//  Imported modules
 const Crypto = require("crypto");
 const FS = require("fs");
 const Path = require("path");
@@ -14,6 +16,7 @@ const Process = require("process");
 const QueryString = require("querystring");
 const WebSocket = require("ws");
 const Util = require("util");
+const WaveFile = require("wavefile")
 
 //
 //  Functions.
@@ -67,6 +70,22 @@ function GenerateAudioJSONPkts(
     return pkts;
 }
 
+/**
+ *  Read PCM data (signed, little-endian, 16-bits) to audio sample data.
+ * 
+ *  @param {Buffer} data
+ *      - The PCM data.
+ *  @return {Number[]}
+ *      - The audio sample data.
+ */
+function ReadDataS16LE(data) {
+    let output = [];
+    for (let i = 0; i < data.length; i += 2) {
+        output.push(data.readInt16LE(i));
+    }
+    return output;
+}
+
 //
 //  Main.
 //
@@ -93,6 +112,10 @@ function GenerateAudioJSONPkts(
     //  Audio file path.
     let auFile = cfg["audio"]["input"];
 
+    //  Audio file path.
+    let outputFile = cfg["audio"]["output"];
+    let outputAudio = [];
+
     //  Query params.
     let appID = cfg["xap"]["appid"];
     let appSecret = cfg["xap"]["appsecret"];
@@ -107,6 +130,9 @@ function GenerateAudioJSONPkts(
         appSecret
     );
 
+    //  Sample rate.
+    let auSampleRate = cfg["audio"]["sample-rate"];
+
     //  Build query param.
     let qparam = QueryString.stringify({
         "appID": appID,
@@ -115,7 +141,7 @@ function GenerateAudioJSONPkts(
         "sign": sign,
         "from": cfg["audio"]["from"],
         "to": cfg["audio"]["to"],
-        "rate": cfg["audio"]["sample-rate"]
+        "rate": auSampleRate
     });
 
     //  Build URL.
@@ -212,14 +238,24 @@ function GenerateAudioJSONPkts(
         } else if (pkt["type"] == "translation/end") {
             console.log("[RX][TRAN] Finished!");
         } else if (pkt["type"] == "audio") {
+            let data = Buffer.from(pkt["data"]["audio"], "base64");
             console.log(Util.format(
                 "[RX][AU] %d bytes.",
-                Buffer.from(pkt["data"]["audio"], "base64").length
+                data.length
             ));
+            outputAudio.push(data);
         } else if (pkt["type"] == "audio/flush") {
             console.log("[RX][AU] Flush!");
         } else if (pkt["type"] == "audio/end") {
             console.log("[RX][AU] Finished!");
+
+            //  Write to output file.
+            if (outputFile) {
+                let output = Buffer.concat(outputAudio);
+                let wav = new WaveFile.WaveFile();
+                wav.fromScratch(1, auSampleRate, "16", ReadDataS16LE(output));
+                FS.writeFileSync(outputFile, wav.toBuffer())
+            }
         } else {
             console.error("[RX][ERROR] Unknown chunk.");
         }

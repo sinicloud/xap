@@ -9,6 +9,7 @@
   "author": "XAP Author",
   "license": "BSD-3-Clause",
   "dependencies": {
+    "wavefile": "^11.0.0",
     "ws": "^7.2.5"
   }
 }

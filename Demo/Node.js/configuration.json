@@ -8,6 +8,7 @@
     },
     "audio": {
         "input": "./en-US-female.pcm",
+        "output": "./output.wav",
         "sample-rate": 16000,
         "from": "en-US",
         "to": "zh"
