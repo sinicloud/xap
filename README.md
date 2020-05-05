@@ -484,3 +484,5 @@ sign = 267a098e2c69ced7f8e27fd2c64bc4c176c64386dc325c90528ca3f58fbe1ec7
 - [基于 Node.js 的实时语音翻译 Web API Demo](https://github.com/sinicloud/xap/tree/master/Demo/Node.js)
 
 - [基于 Python 的实时语音翻译 Web API Demo](https://github.com/sinicloud/xap/tree/master/Demo/Python)
+
+- [基于 Swift 的实时语音翻译 Web API Demo](https://github.com/sinicloud/xap/tree/master/Demo/Swift)
