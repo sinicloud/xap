@@ -46,43 +46,6 @@ Java&gt;=8
 在运行该程序之前，需要先编辑 'Constant.java' 文件，以下是一个配置的样例（用您自己的配置替换对应变量）：
 
 ```java
-    public static final int AUDIO_RATE = 16000;
-    public static final String APP_ID = "xapaccount-1385487646";
-    public static final String APP_SECRET = "b1603e2fad947fc1a560e1f4bb7ffd589f2fbd785ca5176758ec0c9834ac4e3f";
-    public static final String WSS_URL = "wss://api.xap.sinicloud.com:16443/v1/xap/?appID=%1s&salt=%2s" +
-            "&timestamp=%3s&sign=%4s&from=%5s&to=%6s&rate=%7s";
-    public static final String IN_FILE = "./xap-audio/en-US-female.pcm";
-    public static final String OUT_FILE = "./xap-audio/output/";
-    public static final String FROM = "en-US";
-    public static final String TO = "zh";
-```
-
-| 键                      | 类型   | 必须 | 描述 |
-| ---------------------- | ------ | --- | ---- |
-| APP_ID              | String | 是  | 已申请的 APPID |
-| APP_SECRET          | String | 是  | 已申请的 APP 密钥 |
-| WSS_URL                 | String | 是  | 目的 URL|
-| IN_FILE            | String | 是  | 作为输入的音频文件的路径 |
-| OUT_FILE            | String | 是  | 作为输出的音频文件的路径 |
-| AUDIO_RATE      | int | 是  | 音频采样率 |
-| FROM             | String | 是  | 源语言（遵循 BCP46） |
-| TO  | String | 是  | 目标语言（遵循 BCP46） |
-
-## 运行
-
-将项目导入支持maven project的IDE如Eclipse/IDEA/VSCode中，编译后运行Test.java文件即可。
-
-## 文档
-
-[Web API 文档](https://github.com/sinicloud/xap/blob/master/README.md)
-
-````
-
-## 配置
-
-在运行该程序之前，需要先编辑 'Constant.java' 文件，以下是一个配置的样例（用您自己的配置替换对应变量）：
-
-```java
     public static int AUDIO_RATE = 16000;
     public static final String APP_ID = "xapaccount-1385487646";
     public static final String APP_SECRET = "b1603e2fad947fc1a560e1f4bb7ffd589f2fbd785ca5176758ec0c9834ac4e3f";
