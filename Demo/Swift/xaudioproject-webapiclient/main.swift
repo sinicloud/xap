@@ -7,6 +7,7 @@
 //
 //  MARK: Imports.
 //
+import AVFoundation
 import CommonCrypto
 import Foundation
 import Starscream
@@ -124,8 +125,7 @@ class WebSocketHandler: WebSocketDelegate {
             emitDisconnectedHandlers(code: code, reason: reason)
             break
         case .cancelled:
-            emitErrorHandlers(error:
-                XAPError(message: "Unexpected cancelled."));
+            //  Do nothing.
             break
         case .binary(let data):
             guard let msg = String(data: data, encoding: .utf8) else {
@@ -263,6 +263,28 @@ func GenerateAudioJSONPkts(_ data: Data) throws -> [Data] {
     return pkts
 }
 
+///
+///  Build audio player data format.
+///
+///  - Returns: The data format.
+///
+func BuildAudioPlayerDataFormat(auSampelRate: Int)
+    -> AudioStreamBasicDescription {
+        
+    var format = AudioStreamBasicDescription()
+    format.mSampleRate = Float64(auSampelRate)
+    format.mFormatID = kAudioFormatLinearPCM
+    format.mFormatFlags =
+        kLinearPCMFormatFlagIsSignedInteger | kAudioFormatFlagIsPacked
+    format.mChannelsPerFrame = 1
+    format.mFramesPerPacket = 1
+    format.mBitsPerChannel = 16
+    format.mBytesPerFrame =
+        (format.mBitsPerChannel / 8) * format.mChannelsPerFrame
+    format.mBytesPerPacket = format.mBytesPerFrame * format.mFramesPerPacket
+    return format
+}
+
 
 //
 //  MARK: Main.
@@ -298,6 +320,9 @@ do {
     exit(1)
 }
 
+//  Player.
+let auPlayer = XAPPlayer()
+
 //  Generate audio chunks.
 let auChunks: [Data]
 let endChunk: Data
@@ -329,6 +354,7 @@ guard let sign = XAPSignature(
 }
 
 //  Build query param.
+let auSampleRate = cfg["audio"]["sample-rate"].intValue
 let qparams = [
     URLQueryItem(name: "appID", value: appID),
     URLQueryItem(name: "salt", value: salt),
@@ -336,7 +362,7 @@ let qparams = [
     URLQueryItem(name: "sign", value: sign),
     URLQueryItem(name: "from", value: cfg["audio"]["from"].stringValue),
     URLQueryItem(name: "to", value: cfg["audio"]["to"].stringValue),
-    URLQueryItem(name: "rate", value: "\(cfg["audio"]["sample-rate"].intValue)")
+    URLQueryItem(name: "rate", value: "\(auSampleRate)")
 ]
 
 //  Build URL.
@@ -360,11 +386,19 @@ let socket = WebSocket(request: request)
 //  Build handler.
 let handler = WebSocketHandler()
 
-
 //
 //  MARK: TX.
 //
 handler.onConnected {
+    //  Start player.
+    do {
+        try auPlayer.start(dataFormat:
+            BuildAudioPlayerDataFormat(auSampelRate: auSampleRate))
+    } catch let error {
+        print("[PLAYER] Starting player was failed. " +
+              "(error = \"\(error.localizedDescription)\")")
+    }
+    
     //  Write audio data.
     for pkt in auChunks {
         socket.write(data: pkt)
@@ -402,14 +436,35 @@ handler.onMesssage { (msg) in
     } else if pkt["type"] == "translation/end" {
         print("[RX][TRAN] Finished!")
     } else if pkt["type"].stringValue == "audio" {
-        let bytes = String(describing:
-            Data.init(base64Encoded:
-                pkt["data"]["audio"].stringValue)?.count)
-        print("[RX][AU] \(bytes) bytes.")
+        guard let bytes = Data.init(
+            base64Encoded: pkt["data"]["audio"].stringValue) else {
+            print("[RX][AU][ERROR] Converting audio data was failed.")
+            return
+        }
+        print("[RX][AU] \(bytes.count) bytes.")
+        
+        do {
+            try auPlayer.write(data: bytes)
+        } catch let error {
+            print("[PLAYER] Writting player was failed. " +
+                "(error = \"\(error.localizedDescription)\")")
+        }
     } else if pkt["type"].stringValue == "audio/flush" {
         print("[RX][AU] Flush!!")
     } else if pkt["type"].stringValue == "audio/end" {
         print("[RX][AU] Finished!")
+        
+        auPlayer.onAudioQueueIsRunningEvent {
+            print("[] Audio playback has been finished.")
+            exit(0)
+        }
+        
+        do {
+            try auPlayer.stop()
+        } catch let error {
+            print("[ERROR] An unexpected error occurred while stopping audio" +
+                  " queue. (error = \"\(error.localizedDescription)\")")
+        }
     }
     
 }
@@ -425,7 +480,9 @@ handler.onError { (error) in
 handler.onDisconnected { (code, reason) in
     print("[] Connection closed. (code = \"\(code)\", " +
           "reason = \"\(reason)\")")
-    exit((code == 1000) ? 0 : 1)
+    if code != 1000 {
+        exit(1)
+    }
 }
 
 //  Regist delegate.

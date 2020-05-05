@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		17CFEF6124615D0F00FC044C /* configuration.json in CopyFiles */ = {isa = PBXBuildFile; fileRef = 17CFEF6024615CB000FC044C /* configuration.json */; };
 		17CFEF632461613D00FC044C /* en-US-female.pcm in CopyFiles */ = {isa = PBXBuildFile; fileRef = 17E9C9A924612A2D006E5C8A /* en-US-female.pcm */; };
+		17CFEF6624617CA300FC044C /* XAPPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CFEF6524617CA300FC044C /* XAPPlayer.swift */; };
 		17E9C9902460105C006E5C8A /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E9C98F2460105C006E5C8A /* main.swift */; };
 		17E9C9982460115E006E5C8A /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 17E9C9972460115E006E5C8A /* SwiftyJSON */; };
 		17E9C99B2460121D006E5C8A /* Starscream in Frameworks */ = {isa = PBXBuildFile; productRef = 17E9C99A2460121D006E5C8A /* Starscream */; };
@@ -32,6 +33,7 @@
 		17CFEF6024615CB000FC044C /* configuration.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = configuration.json; sourceTree = "<group>"; };
 		17CFEF622461601600FC044C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		17CFEF642461622700FC044C /* LICENSE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
+		17CFEF6524617CA300FC044C /* XAPPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XAPPlayer.swift; sourceTree = "<group>"; };
 		17E9C98C2460105C006E5C8A /* xaudioproject-webapiclient */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "xaudioproject-webapiclient"; sourceTree = BUILT_PRODUCTS_DIR; };
 		17E9C98F2460105C006E5C8A /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		17E9C9A924612A2D006E5C8A /* en-US-female.pcm */ = {isa = PBXFileReference; lastKnownFileType = file; path = "en-US-female.pcm"; sourceTree = "<group>"; };
@@ -74,6 +76,7 @@
 				17E9C9A924612A2D006E5C8A /* en-US-female.pcm */,
 				17E9C98F2460105C006E5C8A /* main.swift */,
 				17CFEF6024615CB000FC044C /* configuration.json */,
+				17CFEF6524617CA300FC044C /* XAPPlayer.swift */,
 			);
 			path = "xaudioproject-webapiclient";
 			sourceTree = "<group>";
@@ -144,6 +147,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17CFEF6624617CA300FC044C /* XAPPlayer.swift in Sources */,
 				17E9C9902460105C006E5C8A /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
