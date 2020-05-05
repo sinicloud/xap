@@ -32,6 +32,7 @@ pip install websocket_client
     },
     "audio": {
         "input": "./en-US-female.pcm",
+        "output": "./output.wav",
         "sample-rate": 16000,
         "from": "en-US",
         "to": "zh"
@@ -48,9 +49,12 @@ pip install websocket_client
 | ws.url                 | String | 是  | 目的 URL|
 | audio                  | Object | 是  | 音频配置 |
 | audio.input            | String | 是  | 作为输入的音频文件的路径 |
+| audio.output           | String | 否  | 作为输出的音频文件的路径 |
 | audio.sample-rate      | Number | 是  | 音频采样率 |
 | audio.from             | String | 是  | 源语言（遵循 BCP46） |
 | <span>audio.to</span>  | String | 是  | 目标语言（遵循 BCP46） |
+
+**注：输入音频格式为 Web API 文档所规定的 PCM 原始数据，输出音频格式则为可播放的 WAV。**
 
 ## 运行
 
