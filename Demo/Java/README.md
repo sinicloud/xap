@@ -17,21 +17,21 @@ Java&gt;=8
 **依赖包通过maven配置，案例（pom.xml）如下：**
 ````xml
   <dependencies>
-	<dependency>
-	  <groupId>com.squareup.okio</groupId>
-	  <artifactId>okio</artifactId>
-	  <version>2.6.0</version>
-	</dependency>
-	<dependency>
-      <groupId>com.squareup.okhttp3</groupId>
-      <artifactId>okhttp</artifactId>
-      <version>3.12.0</version>
-      <exclusions>
-        <exclusion>
-          <groupId>com.google.android</groupId>
-          <artifactId>android</artifactId>
-        </exclusion>
-      </exclusions>
+   <dependency>
+     <groupId>com.squareup.okio</groupId>
+     <artifactId>okio</artifactId>
+     <version>2.6.0</version>
+   </dependency>
+   <dependency>
+    <groupId>com.squareup.okhttp3</groupId>
+    <artifactId>okhttp</artifactId>
+    <version>3.12.0</version>
+    <exclusions>
+      <exclusion>
+        <groupId>com.google.android</groupId>
+        <artifactId>android</artifactId>
+      </exclusion>
+    </exclusions>
    </dependency>
    <dependency>
     <groupId>com.alibaba</groupId>
