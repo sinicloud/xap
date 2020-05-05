@@ -17,19 +17,19 @@
 
 ```json
 {
-"xap": {
-"appid": "xxx",
-"appsecret": "xxx"
-},
-"ws": {
-"url": "wss://api.xap.sinicloud.com:16443/v1/xap/"
-},
-"audio": {
-"input": "xxx",
-"sample-rate": 16000,
-"from": "en-US",
-"to": "zh"
-}
+    "xap": {
+        "appid": "xxx",
+        "appsecret": "xxx"
+    },
+    "ws": {
+        "url": "wss://api.xap.sinicloud.com:16443/v1/xap/"
+    },
+    "audio": {
+        "input": "en-US-female.pcm",
+        "sample-rate": 16000,
+        "from": "en-US",
+        "to": "zh"
+    }
 }
 ```
 
